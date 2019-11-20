@@ -1,0 +1,14 @@
+{
+  "name": "nicer-node-gyp",
+  "version": "0.1.0",
+  "main": "index.js",
+  "license": "MIT",
+  "bin": {
+    "nicer-node-gyp": "index.js"
+  },
+  "dependencies": {
+    "env-paths": "^2.2.0",
+    "fs-extra": "^8.1.0",
+    "ora": "^4.0.3"
+  }
+}
