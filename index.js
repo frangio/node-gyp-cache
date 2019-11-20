@@ -47,15 +47,18 @@ function node_gyp(args) {
   return new Promise((resolve, reject) => {
     let stderr = '';
 
-    const child = proc.execFile('/usr/bin/node-gyp', args, {
-      stdio: ['ignore', 'ignore', 'pipe'],
-    }, (error) => {
-      if (error) {
-        reject(stderr);
-      } else {
-        resolve(stderr);
+    const child = proc.execFile(
+      path.join(__dirname, 'node_modules', '.bin', 'node-gyp'),
+      args,
+      { stdio: ['ignore', 'ignore', 'pipe'] },
+      (error) => {
+        if (error) {
+          reject(stderr);
+        } else {
+          resolve(stderr);
+        }
       }
-    });
+    );
 
     child.stderr.on('data', data => stderr += data);
   });
