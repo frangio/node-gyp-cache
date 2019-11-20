@@ -9,7 +9,6 @@
   "dependencies": {
     "env-paths": "^2.2.0",
     "fs-extra": "^8.1.0",
-    "node-gyp": "^6.0.1",
     "ora": "^4.0.3"
   }
 }

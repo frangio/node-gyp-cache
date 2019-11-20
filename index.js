@@ -48,7 +48,10 @@ function node_gyp(args) {
     let stderr = '';
 
     const child = proc.execFile(
-      path.join(__dirname, 'node_modules', '.bin', 'node-gyp'),
+      path.join(
+        process.argv[0],
+        '../../lib/node_modules/npm/node_modules/node-gyp/bin/node-gyp.js',
+      ),
       args,
       { stdio: ['ignore', 'ignore', 'pipe'] },
       (error) => {
