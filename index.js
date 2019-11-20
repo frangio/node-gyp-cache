@@ -43,15 +43,24 @@ const cache = path.join(
   }
 })();
 
-function node_gyp(args) {
+async function node_gyp(args) {
+  const paths = [
+    'lib/node_modules/npm/node_modules',
+    'share',
+  ];
+
+  const bin = await find(
+    paths.map(p =>
+      path.join(process.argv[0], '../..', p, 'node-gyp/bin/node-gyp.js')
+    ),
+    fs.pathExists,
+  );
+
   return new Promise((resolve, reject) => {
     let stderr = '';
 
     const child = proc.execFile(
-      path.join(
-        process.argv[0],
-        '../../lib/node_modules/npm/node_modules/node-gyp/bin/node-gyp.js',
-      ),
+      bin,
       args,
       { stdio: ['ignore', 'ignore', 'pipe'] },
       (error) => {
@@ -65,4 +74,12 @@ function node_gyp(args) {
 
     child.stderr.on('data', data => stderr += data);
   });
+}
+
+async function find(array, pred) {
+  for (const elem of array) {
+    if (await pred(elem)) {
+      return elem;
+    }
+  }
 }
