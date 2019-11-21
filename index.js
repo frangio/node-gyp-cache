@@ -22,17 +22,17 @@ const cache = path.join(
     const found = await fs.pathExists(cache);
 
     if (found) {
-      spinner.text = `${pkgId} restoring build from cache`;
+      spinner.text = `nicer-node-gyp: ${pkgId} restoring build from cache`;
       await fs.copy(cache, 'build');
-      spinner.text = `${pkgId} restored build from cache`;
+      spinner.text = `nicer-node-gyp: ${pkgId} restored build from cache`;
     }
 
     else {
-      spinner.text = `${pkgId} rebuilding`;
+      spinner.text = `nicer-node-gyp: ${pkgId} rebuilding`;
       await node_gyp(process.argv.slice(2));
-      spinner.text = `${pkgId} storing build in cache`;
+      spinner.text = `nicer-node-gyp: ${pkgId} storing build in cache`;
       await fs.copy('build', cache);
-      spinner.text = `${pkgId} rebuilt and cached`;
+      spinner.text = `nicer-node-gyp: ${pkgId} rebuilt and cached`;
     }
 
     spinner.succeed();
