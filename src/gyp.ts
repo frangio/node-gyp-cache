@@ -5,9 +5,6 @@ import { constants as fsContants } from 'fs';
 import fs from 'fs-extra';
 import envPaths from 'env-paths';
 import ora from 'ora';
-import { promisify } from 'util';
-
-const pipeline = promisify(stream.pipeline);
 
 const paths = envPaths('nicer-node-gyp', { suffix: '' });
 
