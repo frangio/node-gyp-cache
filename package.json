@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc",
-    "prepare": "npm run prepare"
+    "prepare": "npm run build"
   },
   "bin": {
     "nicer-node-gyp": "dist/cli.js"
