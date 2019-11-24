@@ -7,6 +7,9 @@
     "build": "tsc",
     "prepare": "npm run build"
   },
+  "files": [
+    "dist/**/*.js"
+  ],
   "bin": {
     "nicer-node-gyp": "dist/cli.js"
   },
