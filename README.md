@@ -4,18 +4,26 @@
 
 If you're tired of pages and pages of C++ warnings when you just want to develop a JavaScript project, look no further. `nicer-node-gyp` caches native dependencies for a **faster** workflow, and silences the compiler output for a **happier** experience.
 
-You can also use this to improve your CI times.
+Additionally, using `nicer-node-gyp` you can improve the performance of your continuous integration builds.
 
-## Global Install
+## Installation
+
+### Global
 
 ```
 npm install -g nicer-node-gyp
-npm config / yarn config
+npm config set node_gyp nicer-node-gyp
+
+# optional for yarn users
+yarn config set node_gyp nicer-node-gyp
 ```
 
-## Local Install
+If you ever uninstall, remember to remove this configuration using `npm config delete node_gyp`.
+
+
+### Local
 
 ```
-npm install nicer-node-gyp
-# edit .npmrc
+npm install --save-dev nicer-node-gyp
+echo node_gyp = nicer-node-gyp >> .npmrc
 ```
