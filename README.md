@@ -2,7 +2,7 @@
 
 **Improve your workflow by caching native dependencies.**
 
-If you're tired of pages and pages of C++ warnings when you just want to develop a JavaScript project, look no further. `node-gyp-cache` caches native dependencies for a **faster** workflow, and silences the compiler output for a **happier** experience. Additionally, it can improve the performance of your continuous integration builds.
+If you're tired of pages and pages of C++ warnings when you just want to develop a JavaScript project, look no further. `node-gyp-cache` caches native dependencies for a **faster workflow**, and silences the compiler output for a **happier experience**. Additionally, it can improve the performance of your continuous integration builds.
 
 > ⚠️ This project is new and experimental. There may be bugs, although I believe the significant improvement in developer experience is worth the risks. Please report anything you find!
 
