@@ -9,7 +9,7 @@ import gyp from './gyp';
   try {
     await gyp(command, options);
   } catch (e) {
-    console.error(`nicer-node-gyp: ${e.message}`);
+    console.error(`node-gyp-cache: ${e.message}`);
     process.exit(1);
   }
 })();

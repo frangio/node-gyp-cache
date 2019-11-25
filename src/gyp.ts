@@ -6,7 +6,7 @@ import fs from 'fs-extra';
 import envPaths from 'env-paths';
 import ora from 'ora';
 
-const paths = envPaths('nicer-node-gyp', { suffix: '' });
+const paths = envPaths('node-gyp-cache', { suffix: '' });
 
 export default async function gyp(command: string, options: string[]) {
   const name = process.env.npm_package_name;
@@ -55,7 +55,7 @@ class Gyp {
 
   async _run(): Promise<void> {
     if (this.isBuild) {
-      this.spinner = ora('nicer-node-gyp').start();
+      this.spinner = ora('node-gyp-cache').start();
 
       const restoredFromCache = this.useCache && await this.cacheGet();
 
@@ -140,7 +140,7 @@ class Gyp {
 
   async log(msg: string): Promise<void> {
     if (this.spinner !== undefined) {
-      this.spinner.text = `nicer-node-gyp: ${msg}`;
+      this.spinner.text = `node-gyp-cache: ${msg}`;
     }
 
     return new Promise((resolve, reject) => {

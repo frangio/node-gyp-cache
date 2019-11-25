@@ -1,5 +1,5 @@
 {
-  "name": "nicer-node-gyp",
+  "name": "node-gyp-cache",
   "version": "0.1.0",
   "main": "dist/gyp.js",
   "license": "MIT",
@@ -11,7 +11,7 @@
     "dist/**/*.js"
   ],
   "bin": {
-    "nicer-node-gyp": "dist/cli.js"
+    "node-gyp-cache": "dist/cli.js"
   },
   "dependencies": {
     "env-paths": "^2.2.0",
