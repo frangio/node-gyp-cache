@@ -6,6 +6,10 @@ import fs from 'fs-extra';
 import envPaths from 'env-paths';
 import ora from 'ora';
 
+import { nodeId } from './node-id';
+
+const cacheVersion = 'v2';
+
 const paths = envPaths('node-gyp-cache', { suffix: '' });
 
 export default async function gyp(command: string, options: string[]) {
@@ -54,6 +58,8 @@ class Gyp {
   }
 
   async _run(): Promise<void> {
+    await this.cacheSetup();
+
     if (this.isBuild) {
       this.spinner = ora('node-gyp-cache').start();
 
@@ -138,6 +144,13 @@ class Gyp {
     await this.log('rebuilt and cached');
   }
 
+  async cacheSetup(): Promise<void> {
+    const cacheRoot = path.join(paths.cache, cacheVersion);
+    if (!await fs.pathExists(cacheRoot)) {
+      await fs.remove(paths.cache);
+    }
+  }
+
   async log(msg: string): Promise<void> {
     if (this.spinner !== undefined) {
       this.spinner.text = `node-gyp-cache: ${msg}`;
@@ -167,7 +180,7 @@ class Gyp {
   }
 
   get cachePath(): string {
-    return path.join(paths.cache, this.name, this.version);
+    return path.join(paths.cache, cacheVersion, nodeId, this.name, this.version);
   }
 }
 
