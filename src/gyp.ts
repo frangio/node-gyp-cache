@@ -1,7 +1,7 @@
 import proc from 'child_process';
 import path from 'path';
 import stream from 'stream';
-import { constants as fsContants } from 'fs';
+import { constants as fsConstants } from 'fs';
 import fs from 'fs-extra';
 import envPaths from 'env-paths';
 import ora from 'ora';
@@ -115,7 +115,7 @@ class Gyp {
 
   async cacheGet(): Promise<boolean> {
     try {
-      await fs.access(this.cachePath, fsContants.R_OK | fsContants.W_OK);
+      await fs.access(this.cachePath, fsConstants.R_OK | fsConstants.W_OK);
       await this.log('restoring build from cache');
       await fs.copy(this.cachePath, 'build');
       await this.log('restored build from cache');
