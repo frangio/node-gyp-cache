@@ -88,6 +88,7 @@ class Gyp {
 
     const paths = [
       'lib/node_modules/npm/node_modules',
+      'lib/node_modules',
       'share',
     ];
 
