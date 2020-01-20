@@ -22,6 +22,7 @@ yarn config set node_gyp node-gyp-cache
 
 If you ever uninstall, remember to remove this configuration using `npm config delete node_gyp`.
 
+Alternatively, you can define a global environment variable `npm_config_node_gyp=node-gyp-cache`, which will be picked up by both npm and yarn.
 
 ### Local
 
